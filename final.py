@@ -3,7 +3,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
 import pandas as pd
 import numpy as np
-from sklearn import metrics #Import scikit-learn metrics module for accuracy calculation
+from sklearn import metrics
 from sklearn.model_selection import cross_val_score
 from sklearn.metrics import precision_score
 from sklearn.metrics import recall_score
@@ -18,9 +18,9 @@ y = data['fetal_health']
 class_count = {}
 
 for i in y:
-        if i in class_count:
-                class_count[i] += 1
-        else:
-                class_count[i] = 1
+    if i in class_count:
+        class_count[i] += 1
+    else:
+        class_count[i] = 1
 
 print(class_count)
