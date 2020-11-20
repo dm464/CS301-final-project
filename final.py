@@ -12,7 +12,20 @@ from sklearn.metrics import recall_score
 from sklearn.metrics import f1_score
 from sklearn.linear_model import LinearRegression
 
-# Task 1 (visualization should be in separate file?)
+
+# Write message to file.
+def output(*argv):
+    s = ""
+    for arg in argv:
+        s += str(arg) + " "
+    s += '\n'
+    f = open('results.txt', 'a')
+    f.write(s)
+    f.write('\n')
+    f.close()
+    print(s)
+
+# Task 1 (visualization should be in separate file - bar graph?)
 data = pd.read_csv("fetal_health-1.csv")
 X = data.drop('fetal_health', axis=1)
 y = data['fetal_health']
