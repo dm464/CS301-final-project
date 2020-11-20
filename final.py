@@ -13,7 +13,7 @@ from sklearn.metrics import f1_score
 from sklearn.linear_model import LinearRegression
 
 
-# Write message to file.
+# Write to file.
 def output(*argv):
     s = ""
     for arg in argv:
@@ -40,10 +40,13 @@ for i in y:
 
 print(class_count)
 
-# Task 2
+# Task 1.5 Handle data imbalance problem - over or undersampling. There's probably an API function made for this.
 
 
-# Task 3
+# Task 2 involves pearson coefficient or chi score. Find attributes correlated to outcome
+
+
+# Task 3 Create two different models using the most appropriate features found in Task 2
 
 
 # Task 4
