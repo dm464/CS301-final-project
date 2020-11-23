@@ -44,8 +44,12 @@ print(class_count)
 
 # Task 2 involves pearson coefficient. Find attributes correlated to outcome
 for attr in data.columns:
-        pearson = stats.pearsonr(data[attr], y)[0]
-        print("Attribute: ", attr, "Pearson coefficient:", pearson)
+        # pearson[0] is pearson coeffecient, pearson[1] is p value
+        pearson = stats.pearsonr(data[attr], y)
+        print("Attribute: ", attr, "Pearson coefficient:", pearson[0], 'p-value:', pearson[1])
+
+        for crit_val in [0.90, 0.95]:
+                pass
 
 # Task 3 Create two different models using the most appropriate features found in Task 2
 
@@ -53,7 +57,7 @@ for attr in data.columns:
 # Task 4
 
 
-# Task 5
+# Task 5 see homework 3
 
 
 # Task 6
