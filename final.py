@@ -49,16 +49,19 @@ for attr in data.columns:
         print("Attribute: ", attr, "Pearson coefficient:", pearson[0], 'p-value:', pearson[1])
 
         for crit_val in [0.90, 0.95]:
-                if (pearson[0] > pearson[1]):
+                if (abs(pearson[0]) > pearson[1]):
                         print("Significant at", crit_val)
 
 # Task 3 Create two different models using the most appropriate features found in Task 2
 
 
-# Task 4
+# Task 4 Visually present the confusion matrix
 
 
 # Task 5 see homework 3
 
 
 # Task 6
+
+for k in [5, 10, 15]:
+    pass
