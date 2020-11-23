@@ -49,7 +49,8 @@ for attr in data.columns:
         print("Attribute: ", attr, "Pearson coefficient:", pearson[0], 'p-value:', pearson[1])
 
         for crit_val in [0.90, 0.95]:
-                pass
+                if (pearson[0] > pearson[1]):
+                        print("Significant at", crit_val)
 
 # Task 3 Create two different models using the most appropriate features found in Task 2
 
