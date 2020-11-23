@@ -50,11 +50,11 @@ for attr in data.columns:
         p_val = pearson[1]
         print("Attribute: ", attr, "Pearson coefficient:", coeff, 'p-value:', p_val)
 
-        #if (abs(pearson[0]) > pearson[1]):
-                #print("Significant at", crit_val)
+        #if (abs(coeff) > p_val):
+                #print("Significant")
 
         for crit_val in [0.90, 0.95]:
-                if (pearson[1] <= 1 - crit_val):
+                if (p_val <= 1 - crit_val):
                         print("Significant at", crit_val)
 
 
