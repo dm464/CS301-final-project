@@ -1,6 +1,5 @@
 # CS 301 Final Project
 
-from sklearn.datasets import load_iris
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
 import pandas as pd
@@ -11,7 +10,7 @@ from sklearn.metrics import precision_score
 from sklearn.metrics import recall_score
 from sklearn.metrics import f1_score
 from sklearn.linear_model import LinearRegression
-
+from scipy import stats
 
 # Write to file.
 def output(*argv):
@@ -43,8 +42,10 @@ print(class_count)
 # Task 1.5 Handle data imbalance problem - over or undersampling. There's probably an API function made for this.
 
 
-# Task 2 involves pearson coefficient or chi score. Find attributes correlated to outcome
-
+# Task 2 involves pearson coefficient. Find attributes correlated to outcome
+for attr in data.columns:
+        pearson = stats.pearsonr(data[attr], y)[0]
+        print("Attribute: ", attr, "Pearson coefficient:", pearson)
 
 # Task 3 Create two different models using the most appropriate features found in Task 2
 
