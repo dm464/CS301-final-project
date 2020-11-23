@@ -46,11 +46,18 @@ print(class_count)
 for attr in data.columns:
         # pearson[0] is pearson coeffecient, pearson[1] is p value
         pearson = stats.pearsonr(data[attr], y)
-        print("Attribute: ", attr, "Pearson coefficient:", pearson[0], 'p-value:', pearson[1])
+        coeff = pearson[0]
+        p_val = pearson[1]
+        print("Attribute: ", attr, "Pearson coefficient:", coeff, 'p-value:', p_val)
+
+        #if (abs(pearson[0]) > pearson[1]):
+                #print("Significant at", crit_val)
 
         for crit_val in [0.90, 0.95]:
-                if (abs(pearson[0]) > pearson[1]):
+                if (pearson[1] <= 1 - crit_val):
                         print("Significant at", crit_val)
+
+
 
 # Task 3 Create two different models using the most appropriate features found in Task 2
 
