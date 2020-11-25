@@ -27,6 +27,13 @@ For this project, we are creating a model to classify the outcome of Cardiotocog
     - (for both models in 3)
 6. Without considering the class label attribute, use k-means clustering to cluster the records in  different clusters and visualize them (use k to be 5, 10, 15).
 
+What to submit?
+
+a. all code
+
+b. a document that adequately describes your approach for each of the questions.
+
+c. visualizations and other results.
 ## Team
 - Ranfis Fracisco
 - Denisse Mendoza
