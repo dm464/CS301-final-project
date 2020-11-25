@@ -43,19 +43,6 @@ print(class_count)
 
 
 # Task 2 involves pearson coefficient. Find attributes correlated to outcome
-for attr in data.columns:
-        # pearson[0] is pearson coeffecient, pearson[1] is p value
-        pearson = stats.pearsonr(data[attr], y)
-        coeff = pearson[0]
-        p_val = pearson[1]
-        print("Attribute: ", attr, "Pearson coefficient:", coeff, 'p-value:', p_val)
-
-        #if (abs(coeff) > p_val):
-                #print("Significant")
-
-        for crit_val in [0.90, 0.95]:
-                if (p_val <= 1 - crit_val):
-                        print("Significant at", crit_val)
 
 
 
