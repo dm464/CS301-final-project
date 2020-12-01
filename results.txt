@@ -1,0 +1,93 @@
+Attribute:  baseline value Pearson coefficient: 0.14815112725708002 p-value: 6.65222330866557e-12 
+Significant at 0.9 
+Significant at 0.95 
+Attribute:  accelerations Pearson coefficient: -0.3640657928878646 p-value: 1.2435259928471204e-67 
+Significant at 0.9 
+Significant at 0.95 
+Attribute:  fetal_movement Pearson coefficient: 0.08801001103425926 p-value: 4.833903540090021e-05 
+Significant at 0.9 
+Significant at 0.95 
+Attribute:  uterine_contractions Pearson coefficient: -0.20489372127986816 p-value: 1.3846747025641185e-21 
+Significant at 0.9 
+Significant at 0.95 
+Attribute:  light_decelerations Pearson coefficient: 0.0588704880404942 p-value: 0.006623726152976824 
+Significant at 0.9 
+Significant at 0.95 
+Attribute:  severe_decelerations Pearson coefficient: 0.13193412558923653 p-value: 1.018867611566527e-09 
+Significant at 0.9 
+Significant at 0.95 
+Attribute:  prolongued_decelerations Pearson coefficient: 0.48485918632134706 p-value: 8.854416080669225e-126 
+Significant at 0.9 
+Significant at 0.95 
+Attribute:  abnormal_short_term_variability Pearson coefficient: 0.4711907528466741 p-value: 5.921710509842102e-118 
+Significant at 0.9 
+Significant at 0.95 
+Attribute:  mean_value_of_short_term_variability Pearson coefficient: -0.1033821170447501 p-value: 1.7810511708196502e-06 
+Significant at 0.9 
+Significant at 0.95 
+Attribute:  percentage_of_time_with_abnormal_long_term_variability Pearson coefficient: 0.42614641992406926 p-value: 1.5027669343239684e-94 
+Significant at 0.9 
+Significant at 0.95 
+Attribute:  mean_value_of_long_term_variability Pearson coefficient: -0.22679706542348088 p-value: 3.3366704012033907e-26 
+Significant at 0.9 
+Significant at 0.95 
+Attribute:  histogram_width Pearson coefficient: -0.06878875666077891 p-value: 0.00150537507328592 
+Significant at 0.9 
+Significant at 0.95 
+Attribute:  histogram_min Pearson coefficient: 0.0631749067927817 p-value: 0.0035671284650057268 
+Significant at 0.9 
+Significant at 0.95 
+Attribute:  histogram_max Pearson coefficient: -0.04526536674253297 p-value: 0.03689143851470367 
+Significant at 0.9 
+Significant at 0.95 
+Attribute:  histogram_number_of_peaks Pearson coefficient: -0.023665951775175685 p-value: 0.2753986903454356 
+Attribute:  histogram_number_of_zeroes Pearson coefficient: -0.01668181232561771 p-value: 0.44202653872514286 
+Attribute:  histogram_mode Pearson coefficient: -0.25041181222287784 p-value: 9.305867662128216e-32 
+Significant at 0.9 
+Significant at 0.95 
+Attribute:  histogram_mean Pearson coefficient: -0.22698517650772904 p-value: 3.030067468415955e-26 
+Significant at 0.9 
+Significant at 0.95 
+Attribute:  histogram_median Pearson coefficient: -0.2050329955412578 p-value: 1.2988891337541575e-21 
+Significant at 0.9 
+Significant at 0.95 
+Attribute:  histogram_variance Pearson coefficient: 0.2066296220427256 p-value: 6.218926688569492e-22 
+Significant at 0.9 
+Significant at 0.95 
+Attribute:  histogram_tendency Pearson coefficient: -0.13197641519785713 p-value: 1.0063440892916512e-09 
+Significant at 0.9 
+Significant at 0.95 
+ 
+Top 10 most correlated attributes by correlation coefficient 
+prolongued_decelerations 0.48485918632134706 
+abnormal_short_term_variability 0.4711907528466741 
+percentage_of_time_with_abnormal_long_term_variability 0.42614641992406926 
+accelerations 0.3640657928878646 
+histogram_mode 0.25041181222287784 
+histogram_mean 0.22698517650772904 
+mean_value_of_long_term_variability 0.22679706542348088 
+histogram_variance 0.2066296220427256 
+histogram_median 0.2050329955412578 
+uterine_contractions 0.20489372127986816 
+baseline value 0.14815112725708002 
+ 
+----- Bayesian ----- 
+F1 Score:  0.694019736082608 
+Precision:  0.6775321064477691 
+Recall:  0.7552027430448902 
+Area under ROC curve: 0.8792019555871535 
+----- RandomForest ----- 
+F1 Score:  0.9127881624132442 
+Precision:  0.9430984010700515 
+Recall:  0.8905310076582996 
+Area under ROC curve: 0.9795275009117024 
+----- Decision Tree ----- 
+F1 Score:  0.8031267763384046 
+Precision:  0.8490312319259687 
+Recall:  0.7673014933511877 
+Area under ROC curve: 0.9130485457053356 
+----- KNeighbor ----- 
+F1 Score:  0.7981119874109982 
+Precision:  0.8415935739071494 
+Recall:  0.7642392375982597 
+Area under ROC curve: 0.9133103725267557 
