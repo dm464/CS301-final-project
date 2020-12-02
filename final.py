@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
@@ -14,11 +15,11 @@ from sklearn.metrics import precision_score
 from sklearn.metrics import recall_score
 from sklearn.metrics import f1_score
 from sklearn.metrics import confusion_matrix
-from sklearn.metrics import precision_recall_curve
 from sklearn.metrics import plot_confusion_matrix
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 from scipy import stats
+from yellowbrick.classifier import PrecisionRecallCurve
 
 
 # Write to file.
@@ -41,7 +42,6 @@ data = pd.read_csv("fetal_health-1.csv")
 X = data.drop('fetal_health', axis=1)
 y = data['fetal_health']
 
-
 # Task 1
 class_count = {}
 
@@ -62,9 +62,6 @@ plt.ylabel("Number of Instances")
 plt.title("Class Imbalance")
 plt.savefig('Class Imbalance')
 plt.show()
-
-# Task 1.5 Handle data imbalance problem - over or undersampling. May need to oversample
-
 
 # Task 2 Correlation Analysis
 attr_scores = {}
@@ -94,20 +91,77 @@ for index, s in enumerate(sorted_attr):
         break
 output("")
 
+################################################################
+# # Task 1.5 Handle data imbalance problem - over or undersampling. May need to oversample
+# add2 = []
+# add3 = []
+# for i in range(len(data)):
+#     if data.iloc[i]["fetal_health"] == 2:
+#         add2.append(data.iloc[i])
+#     elif data.iloc[i]["fetal_health"] == 3:
+#         add3.append(data.iloc[i])
+#
+# diff2 = class_count[1] - class_count[2]
+# diff3 = class_count[1] - class_count[3]
+#
+# for i in range(diff2):
+#     data = data.append(add2[i % len(add2)])
+#
+# for i in range(diff3):
+#     data = data.append(add3[i % len(add3)])
+#
+# X = data.drop('fetal_health', axis=1)
+# y = data['fetal_health']
+#########################################################
+
 # Task 2.5 - drop non-correlated attributes
 X = X.drop('histogram_number_of_peaks', axis=1)
 X = X.drop('histogram_number_of_zeroes', axis=1)
 
 # split into train-test sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=27)
-print(pd.DataFrame(y_train).value_counts())
-print(pd.DataFrame(y_test).value_counts())
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=27, stratify=y)
+
+# Oversample test data
+#################################################
+add2 = []
+add3 = []
+y2 = []
+y3 = []
+
+for i in range(len(X_train)):
+    if y_train.iloc[i] == 2:
+        add2.append(X_train.iloc[i])
+        y2.append(y_train.iloc[i])
+    elif y_train.iloc[i] == 3:
+        add3.append(X_train.iloc[i])
+        y3.append(y_train.iloc[i])
+
+class_count = {}
+
+for i in y_train:
+    if i in class_count:
+        class_count[i] += 1
+    else:
+        class_count[i] = 1
+
+diff2 = class_count[1] - class_count[2]
+diff3 = class_count[1] - class_count[3]
+
+for i in range(diff2):
+    X_train = X_train.append(add2[i % len(add2)])
+    y_train = y_train.append(pd.Series([2]))
+
+for i in range(diff3):
+    X_train = X_train.append(add3[i % len(add3)])
+    y_train = y_train.append(pd.Series([3]))
+#############################################################
 
 # Task 3 Create two different models using the most appropriate features found in Task 2
 models = {GaussianNB(): 'Bayesian',
           RandomForestClassifier(): 'RandomForest',
           DecisionTreeClassifier(criterion="entropy", random_state=100,
-          max_depth=3, min_samples_leaf=5): 'Decision Tree'}
+          max_depth=3, min_samples_leaf=5): 'Decision Tree',
+          KNeighborsClassifier(n_neighbors=4): 'KNeighbor'}
 
 for model in models:
     model.fit(X_train, y_train)
@@ -132,9 +186,16 @@ for model in models:
     plt.savefig(models[model] + '-confusion-matrix')
     plt.show()
 
+    viz = PrecisionRecallCurve(
+        RandomForestClassifier(n_estimators=10),
+        per_class=True,
+        cmap="Set1"
+    )
+    viz.fit(X_train, y_train)
+    viz.score(X_test, y_pred)
+    viz.show()
 
 # Task 6 K Means clustering
-
 for k in [5, 10, 15]:
     kmeans = KMeans(n_clusters=k, init='k-means++', max_iter=300, random_state=0)
     pred_y = kmeans.fit_predict(X)
