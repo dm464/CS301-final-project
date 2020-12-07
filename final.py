@@ -61,7 +61,7 @@ plt.bar(bar_x, bar_y, color='red')
 plt.xlabel("Class")
 plt.ylabel("Number of Instances")
 plt.title("Class Imbalance")
-plt.savefig('Class Imbalance')
+#plt.savefig('Class Imbalance')
 plt.show()
 
 # Task 2 Correlation Analysis
@@ -184,7 +184,7 @@ for model in models:
     # Task 4 Visually present the confusion matrix
     plot_confusion_matrix(model, X_test, y_test)
     plt.title("Confusion Matrix - " + models[model])
-    plt.savefig(models[model] + '-confusion-matrix')
+    #plt.savefig(models[model] + '-confusion-matrix')
     plt.show()
 
     viz = PrecisionRecallCurve(
@@ -207,5 +207,5 @@ for k in [5, 10, 15]:
     plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], s=300, c='red')
 
     plt.title(str(k) + " clusters")
-    plt.savefig(str(k) + 'kmeans')
+    #plt.savefig(str(k) + 'kmeans')
     plt.show()
