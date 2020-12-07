@@ -33,6 +33,7 @@ def output(*argv):
     f.close()
     print(s)
 
+
 # Wipe file
 f = open('results.txt', 'w')
 f.close()
@@ -119,7 +120,7 @@ X = X.drop('histogram_number_of_peaks', axis=1)
 X = X.drop('histogram_number_of_zeroes', axis=1)
 
 # split into train-test sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=27, stratify=y)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=27)
 
 # Oversample test data
 #################################################
