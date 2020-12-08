@@ -197,15 +197,22 @@ for model in models:
     viz.show()
 
 # Task 6 K Means clustering
+m = 7
+n = 12
 for k in [5, 10, 15]:
+    cluster_data = X.iloc[:, [m,n]]
     kmeans = KMeans(n_clusters=k, init='k-means++', max_iter=300, random_state=0)
-    pred_y = kmeans.fit_predict(X)
+    kmeans.fit(cluster_data)
+    pred_y = kmeans.fit_predict(cluster_data)
 
     # plot original data
-    plt.scatter(X.iloc[:, 0], X.iloc[:, 1])
+    plt.scatter(cluster_data.iloc[:,0], cluster_data.iloc[:,1], c=pred_y, cmap=plt.cm.Paired)
     # plot clusters
-    plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], s=300, c='red')
+    plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], s=300, c='red', label='Centroids')
 
     plt.title(str(k) + " clusters")
-    #plt.savefig(str(k) + 'kmeans')
+    plt.xlabel(X.columns[m])
+    plt.ylabel(X.columns[n])
+    plt.legend()
+    plt.savefig(str(k) + 'kmeans')
     plt.show()
