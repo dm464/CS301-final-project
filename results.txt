@@ -58,7 +58,7 @@ Attribute:  histogram_tendency Pearson coefficient: -0.13197641519785713 p-value
 Significant at 0.9 
 Significant at 0.95 
  
-Top 10 most correlated attributes by correlation coefficient 
+Top 10 most correlated attributes by correlation coefficient (absolute value) 
 prolongued_decelerations 0.48485918632134706 
 abnormal_short_term_variability 0.4711907528466741 
 percentage_of_time_with_abnormal_long_term_variability 0.42614641992406926 
@@ -77,10 +77,10 @@ Precision:  0.6354066502222779
 Recall:  0.7622160817758807 
 Area under ROC curve: 0.8649331481761665 
 ----- RandomForest ----- 
-F1 Score:  0.8902127589331457 
-Precision:  0.9103078638195695 
-Recall:  0.8720924676896615 
-Area under ROC curve: 0.9837152457962866 
+F1 Score:  0.8805524134884181 
+Precision:  0.9034266550014581 
+Recall:  0.8603592603505009 
+Area under ROC curve: 0.982369036991028 
 ----- Decision Tree ----- 
 F1 Score:  0.7743160058371125 
 Precision:  0.7947619047619048 

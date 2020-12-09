@@ -85,7 +85,7 @@ output("")
 
 # Print Top 10 attributes from most to least correlated
 sorted_attr = {k: v for k, v in sorted(attr_scores.items(), key=lambda item: item[1], reverse=True)}
-output("Top 10 most correlated attributes by correlation coefficient")
+output("Top 10 most correlated attributes by correlation coefficient (absolute value)")
 for index, s in enumerate(sorted_attr):
     output(s, attr_scores[s])
     if index > 9:
@@ -99,7 +99,7 @@ X = X.drop('histogram_number_of_zeroes', axis=1)
 # split into train-test sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=27)
 
-# Oversample test data
+# Oversample training data
 #################################################
 add2 = []
 add3 = []
