@@ -92,29 +92,6 @@ for index, s in enumerate(sorted_attr):
         break
 output("")
 
-################################################################
-# # Task 1.5 Handle data imbalance problem - over or undersampling. May need to oversample
-# add2 = []
-# add3 = []
-# for i in range(len(data)):
-#     if data.iloc[i]["fetal_health"] == 2:
-#         add2.append(data.iloc[i])
-#     elif data.iloc[i]["fetal_health"] == 3:
-#         add3.append(data.iloc[i])
-#
-# diff2 = class_count[1] - class_count[2]
-# diff3 = class_count[1] - class_count[3]
-#
-# for i in range(diff2):
-#     data = data.append(add2[i % len(add2)])
-#
-# for i in range(diff3):
-#     data = data.append(add3[i % len(add3)])
-#
-# X = data.drop('fetal_health', axis=1)
-# y = data['fetal_health']
-#########################################################
-
 # Task 2.5 - drop non-correlated attributes
 X = X.drop('histogram_number_of_peaks', axis=1)
 X = X.drop('histogram_number_of_zeroes', axis=1)
@@ -158,6 +135,7 @@ for i in range(diff3):
 #############################################################
 
 # Task 3 Create two different models using the most appropriate features found in Task 2
+# Random Forest uses 100 Trees by default.
 models = {GaussianNB(): 'Bayesian',
           RandomForestClassifier(): 'RandomForest',
           DecisionTreeClassifier(criterion="entropy", random_state=100,
@@ -192,6 +170,7 @@ for model in models:
         per_class=True,
         cmap="Set1"
     )
+
     viz.fit(X_train, y_train)
     viz.score(X_test, y_pred)
     viz.show()
@@ -214,5 +193,5 @@ for k in [5, 10, 15]:
     plt.xlabel(X.columns[m])
     plt.ylabel(X.columns[n])
     plt.legend()
-    plt.savefig(str(k) + 'kmeans')
+    #plt.savefig(str(k) + 'kmeans')
     plt.show()
